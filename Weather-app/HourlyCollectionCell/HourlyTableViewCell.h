@@ -11,6 +11,6 @@
 
 @property(strong,atomic,class) NSString* identifier;
 
-+(NSString*) nib;
++(NSString* _Nullable) nib;
 @end
 

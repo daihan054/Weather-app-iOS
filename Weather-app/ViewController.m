@@ -7,6 +7,8 @@
 
 #import "ViewController.h"
 #import "Weather-model.m"
+#import "HourlyTableViewCell.h"
+#import "WeatherCell.h"
 
 @interface ViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -20,12 +22,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView registerNib:[HourlyTableViewCell nib] forCellReuseIdentifier:HourlyTableViewCell.identifier];
+    
+    [self.tableView registerNib:[WeatherCell nib] forCellReuseIdentifier:WeatherCell.identifier];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.models.count;
+    if(self.models)
+        return self.models.count;
+    else
+        return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

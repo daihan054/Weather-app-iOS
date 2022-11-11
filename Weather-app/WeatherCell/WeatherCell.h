@@ -11,9 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherCell : UITableViewCell
 
-@property(strong,atomic,class) NSString* identifier;
+@property(strong,atomic,class) NSString*  identifier;
 
-+(NSString*) nib;
++(NSString* _Nullable) nib;
 
 @end
 

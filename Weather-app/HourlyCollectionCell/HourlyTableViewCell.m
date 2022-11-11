@@ -27,7 +27,7 @@ static NSString* _identifier;
     [super awakeFromNib];
 }
 
-+ (NSString *) nib {
++ (NSString * _Nullable) nib {
     return _identifier;
 }
 
