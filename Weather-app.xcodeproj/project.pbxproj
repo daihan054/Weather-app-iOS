@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C71D5987291E9583004502A4 /* Weather-model.m in Sources */ = {isa = PBXBuildFile; fileRef = C71D5986291E9583004502A4 /* Weather-model.m */; };
+		C71D598D291E9C29004502A4 /* WeatherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C71D598B291E9C29004502A4 /* WeatherCell.m */; };
+		C71D598E291E9C29004502A4 /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D598C291E9C29004502A4 /* WeatherCell.xib */; };
+		C71D5992291E9C5D004502A4 /* HourlyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C71D5990291E9C5D004502A4 /* HourlyTableViewCell.m */; };
+		C71D5993291E9C5D004502A4 /* HourlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D5991291E9C5D004502A4 /* HourlyTableViewCell.xib */; };
 		C7887143291CF58A002A44EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7887142291CF58A002A44EE /* AppDelegate.m */; };
 		C7887146291CF58A002A44EE /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7887145291CF58A002A44EE /* SceneDelegate.m */; };
 		C7887149291CF58A002A44EE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7887148291CF58A002A44EE /* ViewController.m */; };
@@ -17,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C71D5986291E9583004502A4 /* Weather-model.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Weather-model.m"; sourceTree = "<group>"; };
+		C71D598A291E9C29004502A4 /* WeatherCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherCell.h; sourceTree = "<group>"; };
+		C71D598B291E9C29004502A4 /* WeatherCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherCell.m; sourceTree = "<group>"; };
+		C71D598C291E9C29004502A4 /* WeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
+		C71D598F291E9C5D004502A4 /* HourlyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HourlyTableViewCell.h; sourceTree = "<group>"; };
+		C71D5990291E9C5D004502A4 /* HourlyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HourlyTableViewCell.m; sourceTree = "<group>"; };
+		C71D5991291E9C5D004502A4 /* HourlyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyTableViewCell.xib; sourceTree = "<group>"; };
 		C788713E291CF58A002A44EE /* Weather-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7887141291CF58A002A44EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C7887142291CF58A002A44EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -42,6 +54,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C71D5988291E9BC8004502A4 /* WeatherCell */ = {
+			isa = PBXGroup;
+			children = (
+				C71D598A291E9C29004502A4 /* WeatherCell.h */,
+				C71D598B291E9C29004502A4 /* WeatherCell.m */,
+				C71D598C291E9C29004502A4 /* WeatherCell.xib */,
+			);
+			path = WeatherCell;
+			sourceTree = "<group>";
+		};
+		C71D5989291E9BDA004502A4 /* HourlyCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				C71D598F291E9C5D004502A4 /* HourlyTableViewCell.h */,
+				C71D5990291E9C5D004502A4 /* HourlyTableViewCell.m */,
+				C71D5991291E9C5D004502A4 /* HourlyTableViewCell.xib */,
+			);
+			path = HourlyCollectionCell;
+			sourceTree = "<group>";
+		};
 		C7887135291CF58A002A44EE = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +93,8 @@
 		C7887140291CF58A002A44EE /* Weather-app */ = {
 			isa = PBXGroup;
 			children = (
+				C71D5989291E9BDA004502A4 /* HourlyCollectionCell */,
+				C71D5988291E9BC8004502A4 /* WeatherCell */,
 				C7887141291CF58A002A44EE /* AppDelegate.h */,
 				C7887142291CF58A002A44EE /* AppDelegate.m */,
 				C7887144291CF58A002A44EE /* SceneDelegate.h */,
@@ -72,6 +106,7 @@
 				C788714F291CF58B002A44EE /* LaunchScreen.storyboard */,
 				C7887152291CF58B002A44EE /* Info.plist */,
 				C7887153291CF58B002A44EE /* main.m */,
+				C71D5986291E9583004502A4 /* Weather-model.m */,
 			);
 			path = "Weather-app";
 			sourceTree = "<group>";
@@ -133,6 +168,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C71D598E291E9C29004502A4 /* WeatherCell.xib in Resources */,
+				C71D5993291E9C5D004502A4 /* HourlyTableViewCell.xib in Resources */,
 				C7887151291CF58B002A44EE /* LaunchScreen.storyboard in Resources */,
 				C788714E291CF58B002A44EE /* Assets.xcassets in Resources */,
 				C788714C291CF58A002A44EE /* Main.storyboard in Resources */,
@@ -148,8 +185,11 @@
 			files = (
 				C7887149291CF58A002A44EE /* ViewController.m in Sources */,
 				C7887143291CF58A002A44EE /* AppDelegate.m in Sources */,
+				C71D5992291E9C5D004502A4 /* HourlyTableViewCell.m in Sources */,
 				C7887154291CF58B002A44EE /* main.m in Sources */,
 				C7887146291CF58A002A44EE /* SceneDelegate.m in Sources */,
+				C71D598D291E9C29004502A4 /* WeatherCell.m in Sources */,
+				C71D5987291E9583004502A4 /* Weather-model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +332,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QPSFUGC52A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Weather-app/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -318,6 +359,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QPSFUGC52A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Weather-app/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

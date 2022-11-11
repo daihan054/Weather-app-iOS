@@ -6,8 +6,12 @@
 //
 
 #import "ViewController.h"
+#import "Weather-model.m"
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong,nonatomic) NSMutableArray *models;
 
 @end
 
@@ -15,8 +19,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"Hello world5");
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.models.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [[UITableViewCell alloc]init];
+}
 
 @end
