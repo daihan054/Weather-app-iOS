@@ -19,6 +19,8 @@
 		C788714E291CF58B002A44EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C788714D291CF58B002A44EE /* Assets.xcassets */; };
 		C7887151291CF58B002A44EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C788714F291CF58B002A44EE /* LaunchScreen.storyboard */; };
 		C7887154291CF58B002A44EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7887153291CF58B002A44EE /* main.m */; };
+		C7BC3F99291FD5430000E423 /* Webservice.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BC3F98291FD5430000E423 /* Webservice.m */; };
+		C7BC3F9B291FEE7B0000E423 /* GlobalFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BC3F9A291FEE7B0000E423 /* GlobalFunction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,10 @@
 		C7887150291CF58B002A44EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7887152291CF58B002A44EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7887153291CF58B002A44EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C7BC3F97291FD5430000E423 /* Webservice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Webservice.h; sourceTree = "<group>"; };
+		C7BC3F98291FD5430000E423 /* Webservice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Webservice.m; sourceTree = "<group>"; };
+		C7BC3F9A291FEE7B0000E423 /* GlobalFunction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlobalFunction.m; sourceTree = "<group>"; };
+		C7BC3F9C291FEF3F0000E423 /* GlobalFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalFunction.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,10 @@
 				C7887152291CF58B002A44EE /* Info.plist */,
 				C7887153291CF58B002A44EE /* main.m */,
 				C71D5986291E9583004502A4 /* Weather-model.m */,
+				C7BC3F97291FD5430000E423 /* Webservice.h */,
+				C7BC3F98291FD5430000E423 /* Webservice.m */,
+				C7BC3F9A291FEE7B0000E423 /* GlobalFunction.m */,
+				C7BC3F9C291FEF3F0000E423 /* GlobalFunction.h */,
 			);
 			path = "Weather-app";
 			sourceTree = "<group>";
@@ -188,7 +198,9 @@
 				C71D5992291E9C5D004502A4 /* HourlyTableViewCell.m in Sources */,
 				C7887154291CF58B002A44EE /* main.m in Sources */,
 				C7887146291CF58A002A44EE /* SceneDelegate.m in Sources */,
+				C7BC3F9B291FEE7B0000E423 /* GlobalFunction.m in Sources */,
 				C71D598D291E9C29004502A4 /* WeatherCell.m in Sources */,
+				C7BC3F99291FD5430000E423 /* Webservice.m in Sources */,
 				C71D5987291E9583004502A4 /* Weather-model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
