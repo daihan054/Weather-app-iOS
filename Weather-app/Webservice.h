@@ -10,4 +10,6 @@
 @interface Webservice : NSObject
 
 +(instancetype) sharedInstance;
+-(void)basicHTTPGetApiURL:(NSString*)url header:(NSDictionary*)headerDict body:(NSData*)bodyData completionHandler:(void (^)(NSDictionary* responseDictionary, bool resultFound))completionBlock;
+-(void) fetchTodaysWeatherDataWithCompletionHandler:(void (^)(NSDictionary* _Nullable)) completionBlock;
 @end

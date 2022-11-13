@@ -5,13 +5,15 @@
 //  Created by Reve on 11/10/22.
 //
 
-#import "ViewController.h"
+#import "WeatherViewController.h"
 #import "Weather-model.m"
 #import "HourlyTableViewCell.h"
 #import "WeatherCell.h"
 #import <CoreLocation/CoreLocation.h>
+#import "Webservice.h"
+#import "ProgressHud.h"
 
-@interface ViewController () <UITableViewDelegate,UITableViewDataSource, CLLocationManagerDelegate>
+@interface WeatherViewController () <UITableViewDelegate,UITableViewDataSource, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong,nonatomic) NSMutableArray *models;
@@ -20,7 +22,7 @@
 
 @end
 
-@implementation ViewController
+@implementation WeatherViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +34,15 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.locationManager = [[CLLocationManager alloc]init];
+    
+    [ProgressHUD show: @"Loading..."];
+    [[Webservice sharedInstance] fetchTodaysWeatherDataWithCompletionHandler:^(NSDictionary * _Nullable responseDict) {
+        [ProgressHUD showSuccess];
+//        [ProgressHUD dismiss];
+        if(responseDict) {
+            NSLog(@"%@",responseDict[@"main"][@"temp"]);
+        }
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
