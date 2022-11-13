@@ -19,6 +19,7 @@
 @property (strong,nonatomic) NSMutableArray *models;
 @property (strong,nonatomic) CLLocationManager* locationManager;
 @property(strong,nonatomic) CLLocation* _Nullable currentLocation;
+@property (weak, nonatomic) IBOutlet UILabel *todaysTemp;
 
 @end
 
@@ -34,13 +35,21 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.locationManager = [[CLLocationManager alloc]init];
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [ProgressHUD show: @"Loading..."];
+    __weak typeof(self) weakSelf = self;
+    
     [[Webservice sharedInstance] fetchTodaysWeatherDataWithCompletionHandler:^(NSDictionary * _Nullable responseDict) {
         [ProgressHUD showSuccess];
-        if(responseDict) {
-            NSLog(@"%@",responseDict[@"main"][@"temp"]);
-        }
+        if(!responseDict) { return; }
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            weakSelf.todaysTemp.text = [responseDict[@"main"][@"temp"] stringValue];
+        });
+        NSLog(@"%@",responseDict[@"main"][@"temp"]);
     }];
 }
 

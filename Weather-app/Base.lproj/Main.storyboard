@@ -17,30 +17,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LYu-d7-47i">
+                                <rect key="frame" x="0.0" y="47" width="390" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyJ-R6-gDJ">
+                                        <rect key="frame" x="174" y="39.666666666666671" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="UyJ-R6-gDJ" firstAttribute="centerY" secondItem="LYu-d7-47i" secondAttribute="centerY" id="H4l-QC-NNI"/>
+                                    <constraint firstAttribute="height" constant="100" id="akI-W8-bVy"/>
+                                    <constraint firstItem="UyJ-R6-gDJ" firstAttribute="centerX" secondItem="LYu-d7-47i" secondAttribute="centerX" id="kTQ-T3-I38"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8li-XJ-jd8">
-                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <rect key="frame" x="0.0" y="147" width="390" height="663"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                         <constraints>
-                            <constraint firstItem="8li-XJ-jd8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4nX-7a-jIi"/>
                             <constraint firstItem="8li-XJ-jd8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8te-CY-R3W"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8li-XJ-jd8" secondAttribute="bottom" id="gda-md-wAi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8li-XJ-jd8" secondAttribute="trailing" id="iiQ-V8-hEF"/>
+                            <constraint firstItem="LYu-d7-47i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oQp-vQ-NTE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LYu-d7-47i" secondAttribute="trailing" id="vtE-fk-eu7"/>
+                            <constraint firstItem="8li-XJ-jd8" firstAttribute="top" secondItem="LYu-d7-47i" secondAttribute="bottom" id="xgC-xI-R7k"/>
+                            <constraint firstItem="LYu-d7-47i" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yxC-IA-gpF"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="8li-XJ-jd8" id="4xq-nP-4tJ"/>
+                        <outlet property="todaysTemp" destination="UyJ-R6-gDJ" id="918-nA-w60"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-400" y="5"/>
+            <point key="canvasLocation" x="-400" y="4.9763033175355451"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
