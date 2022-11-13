@@ -38,7 +38,6 @@
     [ProgressHUD show: @"Loading..."];
     [[Webservice sharedInstance] fetchTodaysWeatherDataWithCompletionHandler:^(NSDictionary * _Nullable responseDict) {
         [ProgressHUD showSuccess];
-//        [ProgressHUD dismiss];
         if(responseDict) {
             NSLog(@"%@",responseDict[@"main"][@"temp"]);
         }
