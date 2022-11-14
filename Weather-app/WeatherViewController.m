@@ -47,7 +47,7 @@
         if(!responseDict) { return; }
         
         dispatch_sync(dispatch_get_main_queue(), ^{
-            weakSelf.todaysTemp.text = [responseDict[@"main"][@"temp"] stringValue];
+            weakSelf.todaysTemp.text = [responseDict[@"current_weather"][@"temperature"] stringValue];
         });
         NSLog(@"%@",responseDict[@"main"][@"temp"]);
     }];
@@ -77,7 +77,7 @@
 
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    if(locations && locations.count > 0 && self.currentLocation == nil) {
+    if(locations.count > 0 && self.currentLocation == nil) {
         self.currentLocation = locations.firstObject;
         [self.locationManager stopUpdatingLocation];
         [self requestWeatherForLocation];
