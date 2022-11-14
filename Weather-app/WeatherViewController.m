@@ -43,13 +43,13 @@
     __weak typeof(self) weakSelf = self;
     
     [[Webservice sharedInstance] fetchTodaysWeatherDataWithCompletionHandler:^(NSDictionary * _Nullable responseDict) {
-        [ProgressHUD showSuccess];
+        [ProgressHUD showSuccess: @"Loaded"];
         if(!responseDict) { return; }
         
         dispatch_sync(dispatch_get_main_queue(), ^{
             weakSelf.todaysTemp.text = [responseDict[@"current_weather"][@"temperature"] stringValue];
         });
-        NSLog(@"%@",responseDict[@"main"][@"temp"]);
+        NSLog(@"%@",responseDict[@"current_weather"][@"temperature"]);
     }];
 }
 
