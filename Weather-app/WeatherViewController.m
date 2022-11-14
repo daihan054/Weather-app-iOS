@@ -12,6 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Webservice.h"
 #import "ProgressHud.h"
+#import "WeatherForecast.h"
 
 @interface WeatherViewController () <UITableViewDelegate,UITableViewDataSource, CLLocationManagerDelegate>
 
@@ -20,6 +21,7 @@
 @property (strong,nonatomic) CLLocationManager* locationManager;
 @property(strong,nonatomic) CLLocation* _Nullable currentLocation;
 @property (weak, nonatomic) IBOutlet UILabel *todaysTemp;
+@property(strong,nonatomic) WeatherForecast* modelObj;
 
 @end
 
@@ -48,7 +50,11 @@
         
         dispatch_sync(dispatch_get_main_queue(), ^{
             weakSelf.todaysTemp.text = [responseDict[@"current_weather"][@"temperature"] stringValue];
+            [self.tableView reloadData];
         });
+        
+        weakSelf.modelObj = [[WeatherForecast alloc]initWithDictionary:responseDict];
+        NSLog(@"Data parsed %@\n",weakSelf.modelObj);
         NSLog(@"%@",responseDict[@"current_weather"][@"temperature"]);
     }];
 }

@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 
 @interface HourlyWeatherData : NSObject
-@property(strong,nonatomic) NSMutableArray<NSString*> *time;
-@property(strong,nonatomic) NSMutableArray<NSNumber*> *temperature_2m;
+@property(strong,nonatomic,nullable) NSMutableArray<NSString*> *time;
+@property(strong,nonatomic,nullable) NSMutableArray<NSNumber*> *temperature_2m;
+
+-(instancetype _Nullable) initWithDictionary:(NSDictionary* _Nullable) dict;
 @end

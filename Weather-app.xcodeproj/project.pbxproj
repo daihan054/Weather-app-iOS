@@ -14,7 +14,7 @@
 		C71D5992291E9C5D004502A4 /* HourlyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C71D5990291E9C5D004502A4 /* HourlyTableViewCell.m */; };
 		C71D5993291E9C5D004502A4 /* HourlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D5991291E9C5D004502A4 /* HourlyTableViewCell.xib */; };
 		C7305947292224AE0033892F /* WeatherForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = C7305946292224AE0033892F /* WeatherForecast.m */; };
-		C730594B2922290D0033892F /* CurrentWeatherForeCast.m in Sources */ = {isa = PBXBuildFile; fileRef = C730594A2922290D0033892F /* CurrentWeatherForeCast.m */; };
+		C730594B2922290D0033892F /* CurrentWeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = C730594A2922290D0033892F /* CurrentWeatherData.m */; };
 		C730594E29222AA80033892F /* HourlyUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = C730594D29222AA80033892F /* HourlyUnit.m */; };
 		C730595129222B900033892F /* HourlyWeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = C730595029222B900033892F /* HourlyWeatherData.m */; };
 		C730595429222C3F0033892F /* DailyUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = C730595329222C3F0033892F /* DailyUnit.m */; };
@@ -41,8 +41,8 @@
 		C71D5991291E9C5D004502A4 /* HourlyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyTableViewCell.xib; sourceTree = "<group>"; };
 		C7305945292224AE0033892F /* WeatherForecast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherForecast.h; sourceTree = "<group>"; };
 		C7305946292224AE0033892F /* WeatherForecast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherForecast.m; sourceTree = "<group>"; };
-		C73059492922290D0033892F /* CurrentWeatherForeCast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentWeatherForeCast.h; sourceTree = "<group>"; };
-		C730594A2922290D0033892F /* CurrentWeatherForeCast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentWeatherForeCast.m; sourceTree = "<group>"; };
+		C73059492922290D0033892F /* CurrentWeatherData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentWeatherData.h; sourceTree = "<group>"; };
+		C730594A2922290D0033892F /* CurrentWeatherData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentWeatherData.m; sourceTree = "<group>"; };
 		C730594C29222AA80033892F /* HourlyUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HourlyUnit.h; sourceTree = "<group>"; };
 		C730594D29222AA80033892F /* HourlyUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HourlyUnit.m; sourceTree = "<group>"; };
 		C730594F29222B900033892F /* HourlyWeatherData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HourlyWeatherData.h; sourceTree = "<group>"; };
@@ -125,8 +125,8 @@
 			children = (
 				C7305945292224AE0033892F /* WeatherForecast.h */,
 				C7305946292224AE0033892F /* WeatherForecast.m */,
-				C73059492922290D0033892F /* CurrentWeatherForeCast.h */,
-				C730594A2922290D0033892F /* CurrentWeatherForeCast.m */,
+				C73059492922290D0033892F /* CurrentWeatherData.h */,
+				C730594A2922290D0033892F /* CurrentWeatherData.m */,
 				C730594C29222AA80033892F /* HourlyUnit.h */,
 				C730594D29222AA80033892F /* HourlyUnit.m */,
 				C730594F29222B900033892F /* HourlyWeatherData.h */,
@@ -300,7 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7887149291CF58A002A44EE /* WeatherViewController.m in Sources */,
-				C730594B2922290D0033892F /* CurrentWeatherForeCast.m in Sources */,
+				C730594B2922290D0033892F /* CurrentWeatherData.m in Sources */,
 				C7305947292224AE0033892F /* WeatherForecast.m in Sources */,
 				C7887143291CF58A002A44EE /* AppDelegate.m in Sources */,
 				C71D5992291E9C5D004502A4 /* HourlyTableViewCell.m in Sources */,

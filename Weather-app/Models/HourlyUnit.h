@@ -8,7 +8,9 @@
 #import <Foundation/Foundation.h>
 
 @interface HourlyUnit : NSObject
-@property(strong,nonatomic) NSString *time;
-@property(strong,nonatomic) NSString *temperature_2m;
+@property(strong,nonatomic,nullable) NSString *time;
+@property(strong,nonatomic,nullable) NSString *temperature_2m;
+
+-(instancetype _Nullable) initWithDictionary:(NSDictionary* _Nullable) dict;
 @end
 
