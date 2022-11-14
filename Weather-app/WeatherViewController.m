@@ -17,7 +17,9 @@
 @interface WeatherViewController () <UITableViewDelegate,UITableViewDataSource, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong,nonatomic) NSMutableArray *models;
+@property (strong,nonatomic) NSMutableArray *dailyTime;
+@property (strong,nonatomic) NSMutableArray *dailyMinTemperature;
+@property (strong,nonatomic) NSMutableArray *dailyMaxTemperature;
 @property (strong,nonatomic) CLLocationManager* locationManager;
 @property(strong,nonatomic) CLLocation* _Nullable currentLocation;
 @property (weak, nonatomic) IBOutlet UILabel *todaysTemp;
@@ -53,8 +55,11 @@
             [self.tableView reloadData];
         });
         
-        weakSelf.modelObj = [[WeatherForecast alloc]initWithDictionary:responseDict];
-        NSLog(@"Data parsed %@\n",weakSelf.modelObj);
+        WeatherForecast* modelObj = [[WeatherForecast alloc]initWithDictionary:responseDict];
+        NSLog(@"Data parsed %@\n",modelObj);
+        weakSelf.dailyTime = modelObj.daily.time;
+        weakSelf.dailyMinTemperature = modelObj.daily.temperature_2m_min;
+        weakSelf.dailyMaxTemperature = modelObj.daily.temperature_2m_max;
         NSLog(@"%@",responseDict[@"current_weather"][@"temperature"]);
     }];
 }
@@ -71,14 +76,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(self.models)
-        return self.models.count;
+    if(self.dailyTime)
+        return self.dailyTime.count;
     else
         return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [[UITableViewCell alloc]init];
+    WeatherCell* cell = [tableView dequeueReusableCellWithIdentifier:@"WeatherCell" forIndexPath:indexPath];
+    
+    return cell;
 }
 
 

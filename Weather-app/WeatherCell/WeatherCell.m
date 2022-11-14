@@ -7,6 +7,13 @@
 
 #import "WeatherCell.h"
 
+@interface WeatherCell()
+@property (weak, nonatomic) IBOutlet UILabel *dayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *minTempLabel;
+@property (weak, nonatomic) IBOutlet UILabel *maxTempLabel;
+
+@end
+
 @implementation WeatherCell
 
 static NSString* _identifier;
