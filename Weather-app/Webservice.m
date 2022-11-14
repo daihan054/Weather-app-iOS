@@ -33,7 +33,7 @@ static NSString *dailtyWeather;
 
 -(void) setAllApiURL {
     baseURL = @"https://api.open-meteo.com/v1/forecast";
-    todaysWeather = [NSString stringWithFormat:@"%@?latitude=23.8103&longitude=90.4125&daily=temperature_2m_min,temperature_2m_max,weathercode&current_weather=true&hourly=temperature_2m,weathercode&timezone=GMT",baseURL];
+    todaysWeather = [NSString stringWithFormat:@"%@?latitude=23.8103&longitude=90.4125&daily=temperature_2m_min,temperature_2m_max&current_weather=true&hourly=temperature_2m&timezone=GMT",baseURL];
 }
 
 -(void)basicHTTPGetApiURL:(NSString*)url header:(NSDictionary*)headerDict body:(NSData*)bodyData completionHandler:(void (^)(NSDictionary* responseDictionary, bool resultFound))completionBlock {
