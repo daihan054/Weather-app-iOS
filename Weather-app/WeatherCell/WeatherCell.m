@@ -30,8 +30,8 @@ static NSString* _identifier;
     [super awakeFromNib];
 }
 
-+ (NSString * _Nullable) nib {
-    return _identifier;
++ (UINib * _Nullable) nib {
+    return [UINib nibWithNibName:self.identifier bundle:nil];
 }
 
 -(void) updateUIWith:(NSString*) dayName minTemp:(NSNumber*)minTemp maxTemp:(NSNumber*)maxTemp {

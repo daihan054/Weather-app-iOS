@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(strong,atomic,class) NSString*  identifier;
 
-+(NSString* _Nullable) nib;
++ (UINib * _Nullable) nib;
 
 -(void) updateUIWith:(NSString*) dayName minTemp:(NSNumber*)minTemp maxTemp:(NSNumber*)maxTemp;
 

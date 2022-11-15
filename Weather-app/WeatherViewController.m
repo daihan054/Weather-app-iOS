@@ -52,17 +52,17 @@
         [ProgressHUD showSuccess: @"Loaded"];
         if(!responseDict) { return; }
         
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            weakSelf.todaysTemp.text = [responseDict[@"current_weather"][@"temperature"] stringValue];
-        });
-        
         WeatherForecast* modelObj = [[WeatherForecast alloc]initWithDictionary:responseDict];
         NSLog(@"Data parsed %@\n",modelObj);
         weakSelf.dailyTime = modelObj.daily.time;
         weakSelf.dailyMinTemperature = modelObj.daily.temperature_2m_min;
         weakSelf.dailyMaxTemperature = modelObj.daily.temperature_2m_max;
-        [self.tableView reloadData];
+        
 //        NSLog(@"%@",responseDict[@"current_weather"][@"temperature"]);
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            weakSelf.todaysTemp.text = [responseDict[@"current_weather"][@"temperature"] stringValue];
+            [self.tableView reloadData];
+        });
         for (NSString* dateString in weakSelf.dailyTime) {
             
 //            NSLog(@"date = %@ and dayname = %@\n",dateString,self.dayNameList[d]);
@@ -89,7 +89,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WeatherCell* cell = [tableView dequeueReusableCellWithIdentifier:@"WeatherCell" forIndexPath:indexPath];
+    WeatherCell* cell = (WeatherCell*) [tableView dequeueReusableCellWithIdentifier:@"WeatherCell" forIndexPath:indexPath];
     NSInteger d = (long)[self getDayNameFrom: self.dailyTime[indexPath.row]];
     [cell updateUIWith: self.dayNameList[d] minTemp:self.dailyMinTemperature[indexPath.row] maxTemp:self.dailyMaxTemperature[indexPath.row]];
     return cell;

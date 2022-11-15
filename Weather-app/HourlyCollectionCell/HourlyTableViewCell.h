@@ -9,7 +9,7 @@
 
 @interface HourlyTableViewCell : UITableViewCell
 
-@property(strong,atomic,class) NSString* identifier;
+@property(strong,atomic,class,nullable) NSString* identifier;
 
 +(NSString* _Nullable) nib;
 @end
