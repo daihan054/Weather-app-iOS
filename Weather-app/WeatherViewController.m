@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong,nonatomic,nullable) CLLocation* currentLocation;
 @property (weak, nonatomic) IBOutlet UILabel *todaysTemp;
 @property(strong,nonatomic) WeatherForecast* modelObj;
+@property(strong,nonatomic) Webservice* webservice;
 
 @end
 
@@ -41,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.locationManager = [[CLLocationManager alloc]init];
+    self.webservice = [Webservice sharedInstance];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -67,6 +69,10 @@ NS_ASSUME_NONNULL_BEGIN
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return  100;
+}
+
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     if(locations.count > 0 && self.currentLocation == nil) {
@@ -87,7 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
     [ProgressHUD show: @"Loading..."];
     __weak typeof(self) weakSelf = self;
     
-    [[Webservice sharedInstance] fetchTodaysWeatherDataWithLatitude:latitude longitude:longitude completionBlock:^(NSDictionary * _Nullable responseDict) {
+    [self.webservice fetchTodaysWeatherDataWithLatitude:latitude longitude:longitude completionBlock:^(NSDictionary * _Nullable responseDict) {
         [ProgressHUD showSuccess: @"Loaded"];
         if(!responseDict) { return; }
         
@@ -98,7 +104,7 @@ NS_ASSUME_NONNULL_BEGIN
         
         dispatch_sync(dispatch_get_main_queue(), ^{
             weakSelf.todaysTemp.text = [NSString stringWithFormat:@"%@°C",[responseDict[@"current_weather"][@"temperature"] stringValue]];
-            [self.tableView reloadData];
+            [weakSelf.tableView reloadData];
         });
     }];
     
