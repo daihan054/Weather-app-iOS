@@ -24,7 +24,6 @@
 @property(strong,nonatomic) CLLocation* _Nullable currentLocation;
 @property (weak, nonatomic) IBOutlet UILabel *todaysTemp;
 @property(strong,nonatomic) WeatherForecast* modelObj;
-@property(strong,nonatomic) NSArray<NSString*> *dayNameList;
 
 @end
 
@@ -39,7 +38,6 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.dayNameList = [[NSArray alloc]initWithArray:@[@"_",@"Wednesday",@"Thursday",@"Friday",@"Saturday",@"Sunday",@"Monday",@"Tuesday"]];
     self.locationManager = [[CLLocationManager alloc]init];
 }
 
@@ -58,14 +56,12 @@
         weakSelf.dailyMinTemperature = modelObj.daily.temperature_2m_min;
         weakSelf.dailyMaxTemperature = modelObj.daily.temperature_2m_max;
         
-//        NSLog(@"%@",responseDict[@"current_weather"][@"temperature"]);
         dispatch_sync(dispatch_get_main_queue(), ^{
             weakSelf.todaysTemp.text = [responseDict[@"current_weather"][@"temperature"] stringValue];
             [self.tableView reloadData];
         });
         for (NSString* dateString in weakSelf.dailyTime) {
-            
-//            NSLog(@"date = %@ and dayname = %@\n",dateString,self.dayNameList[d]);
+            NSLog(@"DAYNAME %@ %@",dateString, [self getDayNameFrom:dateString]);
         }
     }];
 }
@@ -90,8 +86,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WeatherCell* cell = (WeatherCell*) [tableView dequeueReusableCellWithIdentifier:@"WeatherCell" forIndexPath:indexPath];
-    NSInteger d = (long)[self getDayNameFrom: self.dailyTime[indexPath.row]];
-    [cell updateUIWith: self.dayNameList[d] minTemp:self.dailyMinTemperature[indexPath.row] maxTemp:self.dailyMaxTemperature[indexPath.row]];
+    [cell updateUIWith: [self getDayNameFrom: self.dailyTime[indexPath.row]] minTemp:self.dailyMinTemperature[indexPath.row] maxTemp:self.dailyMaxTemperature[indexPath.row]];
     return cell;
 }
 
@@ -115,14 +110,16 @@
     NSLog(@"%f | %f",longitude,latitude);
 }
 
--(NSInteger) getDayNameFrom:(NSString*)dateString {
+-(NSString*) getDayNameFrom:(NSString*)dateString {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"YYYY-MM-DD"];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
     NSDate *date = [dateFormat dateFromString:dateString];
-    
-    NSCalendar* cal = [NSCalendar currentCalendar];
-    NSDateComponents* comp = [cal components:NSCalendarUnitWeekday fromDate:date];
-    return [comp weekday];
+    if([[NSCalendar currentCalendar] isDateInToday:date]) {
+        return @"Today";
+    } else {
+        [dateFormat setDateFormat:@"EEE"];
+        return [dateFormat stringFromDate:date];
+    }
 }
  
 @end
