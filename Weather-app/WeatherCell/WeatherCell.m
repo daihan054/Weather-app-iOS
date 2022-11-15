@@ -26,7 +26,7 @@ static NSString* _identifier;
     _identifier = identifier;
 }
 
-+ (UINib * _Nullable) nib {
++ (nullable UINib *) nib {
     return [UINib nibWithNibName:self.identifier bundle:nil];
 }
 

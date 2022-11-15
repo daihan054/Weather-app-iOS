@@ -14,6 +14,8 @@
 #import "ProgressHud.h"
 #import "WeatherForecast.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface WeatherViewController () <UITableViewDelegate,UITableViewDataSource, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -21,7 +23,7 @@
 @property (strong,nonatomic) NSMutableArray *dailyMinTemperature;
 @property (strong,nonatomic) NSMutableArray *dailyMaxTemperature;
 @property (strong,nonatomic) CLLocationManager* locationManager;
-@property(strong,nonatomic) CLLocation* _Nullable currentLocation;
+@property(strong,nonatomic,nullable) CLLocation* currentLocation;
 @property (weak, nonatomic) IBOutlet UILabel *todaysTemp;
 @property(strong,nonatomic) WeatherForecast* modelObj;
 
@@ -116,3 +118,6 @@
 }
  
 @end
+
+
+NS_ASSUME_NONNULL_END

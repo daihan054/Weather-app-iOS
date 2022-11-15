@@ -27,7 +27,7 @@
 @property(strong,nonatomic,nullable) DailyUnit *daily_units;
 @property(strong,nonatomic,nullable) DailyWeatherData *daily;
 
--(instancetype _Nullable )initWithDictionary: (NSDictionary * _Nullable) dictionary;
+-(nullable instancetype)initWithDictionary: (nullable NSDictionary *) dictionary;
 
 
 @end

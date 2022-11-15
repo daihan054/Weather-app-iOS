@@ -36,7 +36,7 @@ static NSString *dailtyWeather;
     todaysWeather = [NSString stringWithFormat:@"%@?daily=temperature_2m_min,temperature_2m_max&current_weather=true&hourly=temperature_2m&timezone=GMT",baseURL];
 }
 
--(void)basicHTTPGetApiURL:(NSString*)url header:(NSDictionary*)headerDict body:(NSData*)bodyData completionHandler:(void (^)(NSDictionary* responseDictionary, bool resultFound))completionBlock {
+-(void)basicHTTPGetApiURL:(NSString*_Nullable)url header:(NSDictionary*)headerDict body:(NSData*)bodyData completionHandler:(void (^_Nullable)(NSDictionary* responseDictionary, bool resultFound))completionBlock {
     
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:120.0];
     
@@ -66,7 +66,7 @@ static NSString *dailtyWeather;
     [dataTask resume];
 }
 
--(void) fetchTodaysWeatherDataWithLatitude:(double)latitude longitude:(double)longitude completionBlock:(void (^_Nullable)(NSDictionary* _Nullable)) completionBlock {
+-(void) fetchTodaysWeatherDataWithLatitude:(double)latitude longitude:(double)longitude completionBlock:(nullable void (^)(NSDictionary* _Nullable)) completionBlock {
     todaysWeather = [todaysWeather stringByAppendingString: [NSString stringWithFormat:@"&latitude=%f&longitude=%f",latitude,longitude]];
     
     NSLog(@"latitude=%f longitude=%f",latitude,longitude);

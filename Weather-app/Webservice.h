@@ -6,10 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
+NS_ASSUME_NONNULL_BEGIN
 
 @interface Webservice : NSObject
 
-+(instancetype _Nullable ) sharedInstance;
--(void)basicHTTPGetApiURL:(NSString*)url header:(NSDictionary*)headerDict body:(NSData*)bodyData completionHandler:(void (^)(NSDictionary* responseDictionary, bool resultFound))completionBlock;
--(void) fetchTodaysWeatherDataWithLatitude:(double)latitude longitude:(double)longitude completionBlock:(void (^_Nullable)(NSDictionary* _Nullable)) completionBlock;
++(nullable instancetype) sharedInstance;
+-(void)basicHTTPGetApiURL:(nullable NSString*)url header:(nullable NSDictionary*)headerDict body:(nullable NSData*)bodyData completionHandler:(nullable void (^)(NSDictionary* responseDictionary, bool resultFound))completionBlock;
+-(void) fetchTodaysWeatherDataWithLatitude:(double)latitude longitude:(double)longitude completionBlock:(nullable void (^)(NSDictionary* _Nullable)) completionBlock;
 @end
+
+
+NS_ASSUME_NONNULL_END

@@ -9,7 +9,7 @@
 
 @implementation WeatherForecast
 
--(instancetype _Nullable )initWithDictionary: (NSDictionary * _Nullable) dictionary {
+-(nullable instancetype)initWithDictionary: (nullable NSDictionary *) dictionary {
     if (self = [super init]) {
         self.latitude = dictionary[@"latitude"];
         self.longitude = dictionary[@"longitude"];

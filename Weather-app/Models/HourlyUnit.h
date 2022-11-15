@@ -11,6 +11,6 @@
 @property(strong,nonatomic,nullable) NSString *time;
 @property(strong,nonatomic,nullable) NSString *temperature_2m;
 
--(instancetype _Nullable) initWithDictionary:(NSDictionary* _Nullable) dict;
+-(nullable instancetype) initWithDictionary:(nullable NSDictionary*) dict;
 @end
 

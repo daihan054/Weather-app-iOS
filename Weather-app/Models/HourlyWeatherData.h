@@ -11,5 +11,5 @@
 @property(strong,nonatomic,nullable) NSMutableArray<NSString*> *time;
 @property(strong,nonatomic,nullable) NSMutableArray<NSNumber*> *temperature_2m;
 
--(instancetype _Nullable) initWithDictionary:(NSDictionary* _Nullable) dict;
+-(nullable instancetype) initWithDictionary:(nullable NSDictionary*) dict;
 @end

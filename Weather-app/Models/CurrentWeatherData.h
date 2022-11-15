@@ -14,5 +14,5 @@
 @property(strong,nonatomic,nullable) NSNumber *weathercode;
 @property(strong,nonatomic,nullable) NSString *time;
 
--(instancetype _Nullable) initWithDictionary: (NSDictionary* _Nullable) dict;
+-(nullable instancetype) initWithDictionary: (nullable NSDictionary*) dict;
 @end
