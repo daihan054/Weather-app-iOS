@@ -18,7 +18,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherViewController () <UITableViewDelegate,UITableViewDataSource, CLLocationManagerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface WeatherViewController () <UITableViewDelegate,UITableViewDataSource, CLLocationManagerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong,nonatomic) NSMutableArray *dailyTimeArray;
@@ -90,12 +90,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - CollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return  0;
+    return  self.hourlyTimeArray.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell* cell = (HourlyCollectionViewCell*) [collectionView dequeueReusableCellWithReuseIdentifier:@"HourlyCollectionViewCell" forIndexPath:indexPath];
+    HourlyCollectionViewCell* cell = (HourlyCollectionViewCell*) [collectionView dequeueReusableCellWithReuseIdentifier:@"HourlyCollectionViewCell" forIndexPath:indexPath];
+    
+    [cell updateUIWithTimeString:@"1pm" tempString:@"17C"];
     return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(100, 100);
 }
 
 #pragma mark - Location delegate

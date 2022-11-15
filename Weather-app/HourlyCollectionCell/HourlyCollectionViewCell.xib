@@ -18,29 +18,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kXQ-Bl-SIl">
-                        <rect key="frame" x="0.0" y="0.0" width="20" height="326"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7N-lO-VeD">
-                                <rect key="frame" x="0.0" y="0.0" width="20" height="13"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="13" id="8K9-Lc-9xT"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="20.333333333333332"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" translatesAutoresizingMaskIntoConstraints="NO" id="6xg-3L-5Hb">
-                                <rect key="frame" x="0.0" y="13" width="20" height="300"/>
+                                <rect key="frame" x="0.0" y="20.333333333333332" width="300" height="19.999999999999996"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="mIC-De-tyU"/>
                                     <constraint firstAttribute="width" constant="20" id="pEV-cN-IHE"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inn-L5-tix">
-                                <rect key="frame" x="0.0" y="313" width="20" height="13"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="13" id="SFy-aM-4tX"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inn-L5-tix">
+                                <rect key="frame" x="0.0" y="40.333333333333336" width="300" height="3.6666666666666643"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

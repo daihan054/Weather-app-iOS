@@ -18,7 +18,7 @@
 static NSString* _identifier;
 
 + (NSString *)identifier {
-    return  @"HourlyTableViewCell";
+    return  @"HourlyCollectionViewCell";
 }
 
 + (void)setIdentifier:(NSString *)identifier {
