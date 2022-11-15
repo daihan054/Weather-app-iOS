@@ -32,8 +32,8 @@ static NSString* _identifier;
 
 -(void) updateUIWith:(NSString*) dayName minTemp:(NSNumber*)minTemp maxTemp:(NSNumber*)maxTemp {
     self.dayLabel.text = dayName;
-    self.minTempLabel.text = [minTemp stringValue];
-    self.maxTempLabel.text = [maxTemp stringValue];
+    self.minTempLabel.text = [NSString stringWithFormat:@"%@°C",[minTemp stringValue]];
+    self.maxTempLabel.text = [NSString stringWithFormat:@"%@°C",[maxTemp stringValue]];
 }
 
 @end

@@ -19,13 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WeatherViewController () <UITableViewDelegate,UITableViewDataSource, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong,nonatomic) NSMutableArray *dailyTime;
-@property (strong,nonatomic) NSMutableArray *dailyMinTemperature;
-@property (strong,nonatomic) NSMutableArray *dailyMaxTemperature;
+@property (strong,nonatomic) NSMutableArray *dailyTimeArray;
+@property (strong,nonatomic) NSMutableArray *dailyMinTemperatureArray;
+@property (strong,nonatomic) NSMutableArray *dailyMaxTemperatureArray;
 @property (strong,nonatomic) CLLocationManager* locationManager;
 @property(strong,nonatomic,nullable) CLLocation* currentLocation;
 @property (weak, nonatomic) IBOutlet UILabel *todaysTemp;
-@property(strong,nonatomic) WeatherForecast* modelObj;
 @property(strong,nonatomic) Webservice* webservice;
 
 @end
@@ -57,15 +56,12 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(self.dailyTime)
-        return self.dailyTime.count;
-    else
-        return 0;
+    return self.dailyTimeArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WeatherCell* cell = (WeatherCell*) [tableView dequeueReusableCellWithIdentifier:@"WeatherCell" forIndexPath:indexPath];
-    [cell updateUIWith: [self getDayNameFrom: self.dailyTime[indexPath.row]] minTemp:self.dailyMinTemperature[indexPath.row] maxTemp:self.dailyMaxTemperature[indexPath.row]];
+    [cell updateUIWith: [self getDayNameFrom: self.dailyTimeArray[indexPath.row]] minTemp:self.dailyMinTemperatureArray[indexPath.row] maxTemp:self.dailyMaxTemperatureArray[indexPath.row]];
     return cell;
 }
 
@@ -98,12 +94,12 @@ NS_ASSUME_NONNULL_BEGIN
         if(!responseDict) { return; }
         
         WeatherForecast* modelObj = [[WeatherForecast alloc]initWithDictionary:responseDict];
-        weakSelf.dailyTime = modelObj.daily.time;
-        weakSelf.dailyMinTemperature = modelObj.daily.temperature_2m_min;
-        weakSelf.dailyMaxTemperature = modelObj.daily.temperature_2m_max;
+        weakSelf.dailyTimeArray = modelObj.daily.time;
+        weakSelf.dailyMinTemperatureArray = modelObj.daily.temperature_2m_min;
+        weakSelf.dailyMaxTemperatureArray = modelObj.daily.temperature_2m_max;
         
         dispatch_sync(dispatch_get_main_queue(), ^{
-            weakSelf.todaysTemp.text = [NSString stringWithFormat:@"%@°C",[responseDict[@"current_weather"][@"temperature"] stringValue]];
+            weakSelf.todaysTemp.text = [NSString stringWithFormat:@"%@°C",modelObj.current_weather.temperature];
             [weakSelf.tableView reloadData];
         });
     }];
