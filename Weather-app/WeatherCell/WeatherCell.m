@@ -26,10 +26,6 @@ static NSString* _identifier;
     _identifier = identifier;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
 + (UINib * _Nullable) nib {
     return [UINib nibWithNibName:self.identifier bundle:nil];
 }

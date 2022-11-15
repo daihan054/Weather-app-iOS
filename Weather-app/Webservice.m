@@ -33,7 +33,7 @@ static NSString *dailtyWeather;
 
 -(void) setAllApiURL {
     baseURL = @"https://api.open-meteo.com/v1/forecast";
-    todaysWeather = [NSString stringWithFormat:@"%@?latitude=23.8103&longitude=90.4125&daily=temperature_2m_min,temperature_2m_max&current_weather=true&hourly=temperature_2m&timezone=GMT",baseURL];
+    todaysWeather = [NSString stringWithFormat:@"%@?daily=temperature_2m_min,temperature_2m_max&current_weather=true&hourly=temperature_2m&timezone=GMT",baseURL];
 }
 
 -(void)basicHTTPGetApiURL:(NSString*)url header:(NSDictionary*)headerDict body:(NSData*)bodyData completionHandler:(void (^)(NSDictionary* responseDictionary, bool resultFound))completionBlock {
@@ -66,7 +66,10 @@ static NSString *dailtyWeather;
     [dataTask resume];
 }
 
--(void) fetchTodaysWeatherDataWithCompletionHandler:(void (^)(NSDictionary* _Nullable)) completionBlock {
+-(void) fetchTodaysWeatherDataWithLatitude:(double)latitude longitude:(double)longitude completionBlock:(void (^_Nullable)(NSDictionary* _Nullable)) completionBlock {
+    todaysWeather = [todaysWeather stringByAppendingString: [NSString stringWithFormat:@"&latitude=%f&longitude=%f",latitude,longitude]];
+    
+    NSLog(@"latitude=%f longitude=%f",latitude,longitude);
     [self basicHTTPGetApiURL:todaysWeather header:nil body:nil completionHandler:^(NSDictionary* responseDictionary, bool resultFound) {
         if(resultFound) {
             completionBlock(responseDictionary);

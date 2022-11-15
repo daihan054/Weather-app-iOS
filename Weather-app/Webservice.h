@@ -9,7 +9,7 @@
 
 @interface Webservice : NSObject
 
-+(instancetype) sharedInstance;
++(instancetype _Nullable ) sharedInstance;
 -(void)basicHTTPGetApiURL:(NSString*)url header:(NSDictionary*)headerDict body:(NSData*)bodyData completionHandler:(void (^)(NSDictionary* responseDictionary, bool resultFound))completionBlock;
--(void) fetchTodaysWeatherDataWithCompletionHandler:(void (^)(NSDictionary* _Nullable)) completionBlock;
+-(void) fetchTodaysWeatherDataWithLatitude:(double)latitude longitude:(double)longitude completionBlock:(void (^_Nullable)(NSDictionary* _Nullable)) completionBlock;
 @end

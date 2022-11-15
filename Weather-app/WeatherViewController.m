@@ -41,31 +41,6 @@
     self.locationManager = [[CLLocationManager alloc]init];
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [ProgressHUD show: @"Loading..."];
-    __weak typeof(self) weakSelf = self;
-    
-    [[Webservice sharedInstance] fetchTodaysWeatherDataWithCompletionHandler:^(NSDictionary * _Nullable responseDict) {
-        [ProgressHUD showSuccess: @"Loaded"];
-        if(!responseDict) { return; }
-        
-        WeatherForecast* modelObj = [[WeatherForecast alloc]initWithDictionary:responseDict];
-        NSLog(@"Data parsed %@\n",modelObj);
-        weakSelf.dailyTime = modelObj.daily.time;
-        weakSelf.dailyMinTemperature = modelObj.daily.temperature_2m_min;
-        weakSelf.dailyMaxTemperature = modelObj.daily.temperature_2m_max;
-        
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            weakSelf.todaysTemp.text = [responseDict[@"current_weather"][@"temperature"] stringValue];
-            [self.tableView reloadData];
-        });
-        for (NSString* dateString in weakSelf.dailyTime) {
-            NSLog(@"DAYNAME %@ %@",dateString, [self getDayNameFrom:dateString]);
-        }
-    }];
-}
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self setupLocation];
@@ -104,8 +79,26 @@
         return;
     }
     
-    CLLocationDegrees longitude = self.currentLocation.coordinate.longitude;
-    CLLocationDegrees latitude = self.currentLocation.coordinate.latitude;
+    double longitude = self.currentLocation.coordinate.longitude;
+    double latitude = self.currentLocation.coordinate.latitude;
+    
+    [ProgressHUD show: @"Loading..."];
+    __weak typeof(self) weakSelf = self;
+    
+    [[Webservice sharedInstance] fetchTodaysWeatherDataWithLatitude:latitude longitude:longitude completionBlock:^(NSDictionary * _Nullable responseDict) {
+        [ProgressHUD showSuccess: @"Loaded"];
+        if(!responseDict) { return; }
+        
+        WeatherForecast* modelObj = [[WeatherForecast alloc]initWithDictionary:responseDict];
+        weakSelf.dailyTime = modelObj.daily.time;
+        weakSelf.dailyMinTemperature = modelObj.daily.temperature_2m_min;
+        weakSelf.dailyMaxTemperature = modelObj.daily.temperature_2m_max;
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            weakSelf.todaysTemp.text = [NSString stringWithFormat:@"%@°C",[responseDict[@"current_weather"][@"temperature"] stringValue]];
+            [self.tableView reloadData];
+        });
+    }];
     
     NSLog(@"%f | %f",longitude,latitude);
 }
