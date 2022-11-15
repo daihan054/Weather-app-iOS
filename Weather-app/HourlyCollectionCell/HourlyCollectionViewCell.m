@@ -5,14 +5,16 @@
 //  Created by Reve on 11/11/22.
 //
 
-#import "HourlyTableViewCell.h"
+#import "HourlyCollectionViewCell.h"
 
-@interface HourlyTableViewCell()
+@interface HourlyCollectionViewCell()
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tempLabel;
 
 @end
 
 
-@implementation HourlyTableViewCell
+@implementation HourlyCollectionViewCell
 static NSString* _identifier;
 
 + (NSString *)identifier {
@@ -29,6 +31,11 @@ static NSString* _identifier;
 
 + (nullable UINib *) nib {
     return [UINib nibWithNibName:self.identifier bundle:nil];
+}
+
+-(void) updateUIWithTimeString:(NSString*)timeString tempString:(NSString*)tempString {
+    self.timeLabel.text = timeString;
+    self.tempLabel.text = tempString;
 }
 
 @end

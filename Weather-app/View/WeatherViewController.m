@@ -6,25 +6,35 @@
 //
 
 #import "WeatherViewController.h"
-#import "Weather-model.m"
-#import "HourlyTableViewCell.h"
+#import "HourlyCollectionViewCell.h"
 #import "WeatherCell.h"
 #import <CoreLocation/CoreLocation.h>
+#import <UIKit/UIKit.h>
 #import "Webservice.h"
 #import "ProgressHud.h"
 #import "WeatherForecast.h"
+#import "UIView+Extension.h"
+#import "HourlyCollectionViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherViewController () <UITableViewDelegate,UITableViewDataSource, CLLocationManagerDelegate>
+@interface WeatherViewController () <UITableViewDelegate,UITableViewDataSource, CLLocationManagerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong,nonatomic) NSMutableArray *dailyTimeArray;
 @property (strong,nonatomic) NSMutableArray *dailyMinTemperatureArray;
 @property (strong,nonatomic) NSMutableArray *dailyMaxTemperatureArray;
+
+@property (strong,nonatomic) NSMutableArray *hourlyTimeArray;
+@property (strong,nonatomic) NSMutableArray *hourlyTemperatureArray;
+
 @property (strong,nonatomic) CLLocationManager* locationManager;
 @property(strong,nonatomic,nullable) CLLocation* currentLocation;
+@property (weak, nonatomic) IBOutlet UIView *dailyForecastParentView;
+
 @property (weak, nonatomic) IBOutlet UILabel *todaysTemp;
+@property (weak, nonatomic) IBOutlet UIView *hourlyParentVIew;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property(strong,nonatomic) Webservice* webservice;
 
 @end
@@ -34,14 +44,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerNib:[HourlyTableViewCell nib] forCellReuseIdentifier:HourlyTableViewCell.identifier];
+    [self.collectionView registerNib:[HourlyCollectionViewCell nib] forCellWithReuseIdentifier:[HourlyCollectionViewCell identifier]];
     
     [self.tableView registerNib:[WeatherCell nib] forCellReuseIdentifier:WeatherCell.identifier];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     self.locationManager = [[CLLocationManager alloc]init];
     self.webservice = [Webservice sharedInstance];
+    [self makeViewCornerRounded];
+}
+
+-(void) makeViewCornerRounded {
+    [self.dailyForecastParentView makeRoundedCornerWithRadius: 10.0];
+    [self.hourlyParentVIew makeRoundedCornerWithRadius: 10.0];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -55,6 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
     [self.locationManager startUpdatingLocation];
 }
 
+#pragma mark - TableViewDelegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dailyTimeArray.count;
 }
@@ -69,6 +88,17 @@ NS_ASSUME_NONNULL_BEGIN
     return  100;
 }
 
+#pragma mark - CollectionViewDelegate
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return  0;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell* cell = (HourlyCollectionViewCell*) [collectionView dequeueReusableCellWithReuseIdentifier:@"HourlyCollectionViewCell" forIndexPath:indexPath];
+    return cell;
+}
+
+#pragma mark - Location delegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     if(locations.count > 0 && self.currentLocation == nil) {
@@ -97,10 +127,13 @@ NS_ASSUME_NONNULL_BEGIN
         weakSelf.dailyTimeArray = modelObj.daily.time;
         weakSelf.dailyMinTemperatureArray = modelObj.daily.temperature_2m_min;
         weakSelf.dailyMaxTemperatureArray = modelObj.daily.temperature_2m_max;
+        weakSelf.hourlyTimeArray = modelObj.hourly.time;
+        weakSelf.hourlyTemperatureArray = modelObj.hourly.temperature_2m;
         
         dispatch_sync(dispatch_get_main_queue(), ^{
             weakSelf.todaysTemp.text = [NSString stringWithFormat:@"%@°C",modelObj.current_weather.temperature];
             [weakSelf.tableView reloadData];
+            [weakSelf.collectionView reloadData];
         });
     }];
     
