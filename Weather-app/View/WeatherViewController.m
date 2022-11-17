@@ -55,6 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
     self.locationManager = [[CLLocationManager alloc]init];
     self.webservice = [Webservice sharedInstance];
     [self makeViewCornerRounded];
+    
 }
 
 -(void) makeViewCornerRounded {
