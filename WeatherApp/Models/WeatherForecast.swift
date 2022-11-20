@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc class WeatherForecast: NSObject, Codable {
+@objc public class WeatherForecast: NSObject, Codable {
     
     let latitude: Double
     let longitude: Double
@@ -43,7 +43,7 @@ import Foundation
         return item
     }
     
-    required init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         latitude = try container.decode(Double.self, forKey: .latitude)
         longitude = try container.decode(Double.self, forKey: .longitude)
