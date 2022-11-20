@@ -42,14 +42,13 @@
 		C71D598F291E9C5D004502A4 /* HourlyCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HourlyCollectionViewCell.h; sourceTree = "<group>"; };
 		C71D5990291E9C5D004502A4 /* HourlyCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HourlyCollectionViewCell.m; sourceTree = "<group>"; };
 		C71D5991291E9C5D004502A4 /* HourlyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyCollectionViewCell.xib; sourceTree = "<group>"; };
-		C7297EE7292A12D100042EE4 /* Weather-app-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Weather-app-Bridging-Header.h"; sourceTree = "<group>"; };
 		C7297EE8292A12D100042EE4 /* WeatherForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecast.swift; sourceTree = "<group>"; };
 		C7297EEA292A14F500042EE4 /* CurrentWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		C7297EEC292A15DD00042EE4 /* HourlyUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyUnit.swift; sourceTree = "<group>"; };
 		C7297EEE292A1E5D00042EE4 /* HourlyWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherData.swift; sourceTree = "<group>"; };
 		C7297EF0292A1ECD00042EE4 /* DailyUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyUnit.swift; sourceTree = "<group>"; };
 		C7297EF2292A1F3E00042EE4 /* DailyWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherData.swift; sourceTree = "<group>"; };
-		C788713E291CF58A002A44EE /* Weather-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C788713E291CF58A002A44EE /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7887141291CF58A002A44EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C7887142291CF58A002A44EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C7887144291CF58A002A44EE /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -152,7 +151,7 @@
 		C7887135291CF58A002A44EE = {
 			isa = PBXGroup;
 			children = (
-				C7887140291CF58A002A44EE /* Weather-app */,
+				C7887140291CF58A002A44EE /* WeatherApp */,
 				C788713F291CF58A002A44EE /* Products */,
 				C5DB6AAD9881187393F0E61A /* Pods */,
 				C456D90058DB6592A61C59EA /* Frameworks */,
@@ -162,15 +161,14 @@
 		C788713F291CF58A002A44EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C788713E291CF58A002A44EE /* Weather-app.app */,
+				C788713E291CF58A002A44EE /* WeatherApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C7887140291CF58A002A44EE /* Weather-app */ = {
+		C7887140291CF58A002A44EE /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				C7297EE7292A12D100042EE4 /* Weather-app-Bridging-Header.h */,
 				C71D3237292395BA00DC424A /* Extensions */,
 				C7305948292228DC0033892F /* Models */,
 				C71D5989291E9BDA004502A4 /* HourlyCollectionCell */,
@@ -191,15 +189,15 @@
 				C7BC3F9A291FEE7B0000E423 /* GlobalFunction.m */,
 				C7BC3F9C291FEF3F0000E423 /* GlobalFunction.h */,
 			);
-			path = "Weather-app";
+			path = WeatherApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C788713D291CF58A002A44EE /* Weather-app */ = {
+		C788713D291CF58A002A44EE /* WeatherApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C7887157291CF58B002A44EE /* Build configuration list for PBXNativeTarget "Weather-app" */;
+			buildConfigurationList = C7887157291CF58B002A44EE /* Build configuration list for PBXNativeTarget "WeatherApp" */;
 			buildPhases = (
 				F922C3D75D16E3814F033D4D /* [CP] Check Pods Manifest.lock */,
 				C788713A291CF58A002A44EE /* Sources */,
@@ -211,9 +209,9 @@
 			);
 			dependencies = (
 			);
-			name = "Weather-app";
+			name = WeatherApp;
 			productName = "Weather-app";
-			productReference = C788713E291CF58A002A44EE /* Weather-app.app */;
+			productReference = C788713E291CF58A002A44EE /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -231,7 +229,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C7887139291CF58A002A44EE /* Build configuration list for PBXProject "Weather-app" */;
+			buildConfigurationList = C7887139291CF58A002A44EE /* Build configuration list for PBXProject "WeatherApp" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -244,7 +242,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C788713D291CF58A002A44EE /* Weather-app */,
+				C788713D291CF58A002A44EE /* WeatherApp */,
 			);
 		};
 /* End PBXProject section */
@@ -473,7 +471,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QPSFUGC52A;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Weather-app/Info.plist";
+				INFOPLIST_FILE = WeatherApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -485,10 +483,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.daihan.practise.Weather-app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.daihan.practise.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Weather-app/Models/Weather-app-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -506,7 +503,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QPSFUGC52A;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Weather-app/Info.plist";
+				INFOPLIST_FILE = WeatherApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -518,10 +515,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.daihan.practise.Weather-app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.daihan.practise.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Weather-app/Models/Weather-app-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -530,7 +526,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C7887139291CF58A002A44EE /* Build configuration list for PBXProject "Weather-app" */ = {
+		C7887139291CF58A002A44EE /* Build configuration list for PBXProject "WeatherApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C7887155291CF58B002A44EE /* Debug */,
@@ -539,7 +535,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C7887157291CF58B002A44EE /* Build configuration list for PBXNativeTarget "Weather-app" */ = {
+		C7887157291CF58B002A44EE /* Build configuration list for PBXNativeTarget "WeatherApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C7887158291CF58B002A44EE /* Debug */,

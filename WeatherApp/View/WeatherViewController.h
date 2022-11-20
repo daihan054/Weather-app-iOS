@@ -6,6 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeatherApp-Swift.h"
+
+@class WeatherForeCast;
 
 @interface WeatherViewController : UIViewController
 

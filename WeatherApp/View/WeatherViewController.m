@@ -12,7 +12,8 @@
 #import <UIKit/UIKit.h>
 #import "Webservice.h"
 #import "ProgressHud.h"
-#import "WeatherForecast.h"
+#import "WeatherApp-Swift.h"
+
 #import "UIView+Extension.h"
 #import "HourlyCollectionViewCell.h"
 
@@ -126,22 +127,22 @@ NS_ASSUME_NONNULL_BEGIN
     [ProgressHUD show: @"Loading..."];
     __weak typeof(self) weakSelf = self;
     
-    [self.webservice fetchTodaysWeatherDataWithLatitude:latitude longitude:longitude completionBlock:^(NSDictionary * _Nullable responseDict) {
+    [self.webservice fetchTodaysWeatherDataWithLatitude:latitude longitude:longitude completionBlock:^(NSData * _Nullable data) {
         [ProgressHUD showSuccess: @"Loaded"];
-        if(!responseDict) { return; }
+        if(!data) { return; }
         
-        WeatherForecast* modelObj = [[WeatherForecast alloc]initWithDictionary:responseDict];
-        weakSelf.dailyTimeArray = modelObj.daily.time;
-        weakSelf.dailyMinTemperatureArray = modelObj.daily.temperature_2m_min;
-        weakSelf.dailyMaxTemperatureArray = modelObj.daily.temperature_2m_max;
-        weakSelf.hourlyTimeArray = modelObj.hourly.time;
-        weakSelf.hourlyTemperatureArray = modelObj.hourly.temperature_2m;
-        
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            weakSelf.todaysTemp.text = [NSString stringWithFormat:@"%@°C",modelObj.current_weather.temperature];
-            [weakSelf.tableView reloadData];
-            [weakSelf.collectionView reloadData];
-        });
+        WeatherForeCast* modelObject = WeatherForeCast  ;
+//        weakSelf.dailyTimeArray = modelObj.daily.time;
+//        weakSelf.dailyMinTemperatureArray = modelObj.daily.temperature_2m_min;
+//        weakSelf.dailyMaxTemperatureArray = modelObj.daily.temperature_2m_max;
+//        weakSelf.hourlyTimeArray = modelObj.hourly.time;
+//        weakSelf.hourlyTemperatureArray = modelObj.hourly.temperature_2m;
+//
+//        dispatch_sync(dispatch_get_main_queue(), ^{
+//            weakSelf.todaysTemp.text = [NSString stringWithFormat:@"%@°C",modelObj.current_weather.temperature];
+//            [weakSelf.tableView reloadData];
+//            [weakSelf.collectionView reloadData];
+//        });
     }];
     
     NSLog(@"%f | %f",longitude,latitude);

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeatherForecast: NSObject, Codable {
+@objc class WeatherForecast: NSObject, Codable {
     
     let latitude: Double
     let longitude: Double
@@ -37,26 +37,26 @@ class WeatherForecast: NSObject, Codable {
         case daily = "daily"
     }
     
-    @objc public class func create(from data: Data) -> MyCodableItem {
+    @objc class func create(from data: Data) -> WeatherForecast {
         let decoder = JSONDecoder()
-        let item = try! decoder.decode(MyCodableItem.self, from: data)
+        let item = try! decoder.decode(WeatherForecast.self, from: data)
         return item
     }
     
-    public required init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         latitude = try container.decode(Double.self, forKey: .latitude)
-        longitude = try? container.decode(Double.self, forKey: .longitude)
-        generationtime_ms = try? container.decode(Double.self, forKey: .generationtime_ms)
-        utc_offset_seconds = try? container.decode(Double.self, forKey: .utc_offset_seconds)
-        timezone = try? container.decode(Double.self, forKey: .timezone)
-        timezone_abbreviation = try? container.decode(Double.self, forKey: .timezone_abbreviation)
-        elevation = try? container.decode(Double.self, forKey: .elevation)
-        current_weather = try? container.decode(Double.self, forKey: .current_weather)
-        hourly_units = try? container.decode(Double.self, forKey: .hourly_units)
-        hourly = try? container.decode(Double.self, forKey: .hourly)
-        daily_units = try? container.decode(Double.self, forKey: .daily_units)
-        daily = try? container.decode(Double.self, forKey: .daily)
+        longitude = try container.decode(Double.self, forKey: .longitude)
+        generationtime_ms = try container.decode(Double.self, forKey: .generationtime_ms)
+        utc_offset_seconds = try container.decode(Double.self, forKey: .utc_offset_seconds)
+        timezone = try container.decode(String.self, forKey: .timezone)
+        timezone_abbreviation = try container.decode(String.self, forKey: .timezone_abbreviation)
+        elevation = try container.decode(Double.self, forKey: .elevation)
+        current_weather = try container.decode(CurrentWeatherData.self, forKey: .current_weather)
+        hourly_units = try container.decode(HourlyUnit.self, forKey: .hourly_units)
+        hourly = try container.decode(HourlyWeatherData.self, forKey: .hourly)
+        daily_units = try container.decode(DailyUnit.self, forKey: .daily_units)
+        daily = try container.decode(DailyWeatherData.self, forKey: .daily)
         super.init()
     }
     
