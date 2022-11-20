@@ -11,8 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Webservice : NSObject
 
 +(nullable instancetype) sharedInstance;
--(void)basicHTTPGetApiURL:(nullable NSString*)url header:(nullable NSDictionary*)headerDict body:(nullable NSData*)bodyData completionHandler:(nullable void (^)(NSDictionary* responseDictionary, bool resultFound))completionBlock;
--(void) fetchTodaysWeatherDataWithLatitude:(double)latitude longitude:(double)longitude completionBlock:(nullable void (^)(NSDictionary* _Nullable)) completionBlock;
+-(void)basicHTTPGetApiURL:(NSString*_Nullable)url header:(NSDictionary*)headerDict body:(NSData*)bodyData completionHandler:(void (^_Nullable)(NSData* data, bool resultFound))completionBlock;
+-(void) fetchTodaysWeatherDataWithLatitude:(double)latitude longitude:(double)longitude completionBlock:(nullable void (^)(NSData* _Nullable)) completionBlock;
 @end
 
 
