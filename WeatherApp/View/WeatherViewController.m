@@ -131,7 +131,7 @@ NS_ASSUME_NONNULL_BEGIN
         [ProgressHUD showSuccess: @"Loaded"];
         if(!data) { return; }
         
-        WeatherForeCast* modelObject =  WeatherForecast create;
+        WeatherForecast* modelObject =  [WeatherForecast createFrom:data];
 //        weakSelf.dailyTimeArray = modelObj.daily.time;
 //        weakSelf.dailyMinTemperatureArray = modelObj.daily.temperature_2m_min;
 //        weakSelf.dailyMaxTemperatureArray = modelObj.daily.temperature_2m_max;
