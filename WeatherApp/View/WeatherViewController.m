@@ -132,17 +132,7 @@ NS_ASSUME_NONNULL_BEGIN
         if(!data) { return; }
         
         WeatherForecast* modelObject =  [WeatherForecast createFrom:data];
-//        weakSelf.dailyTimeArray = modelObj.daily.time;
-//        weakSelf.dailyMinTemperatureArray = modelObj.daily.temperature_2m_min;
-//        weakSelf.dailyMaxTemperatureArray = modelObj.daily.temperature_2m_max;
-//        weakSelf.hourlyTimeArray = modelObj.hourly.time;
-//        weakSelf.hourlyTemperatureArray = modelObj.hourly.temperature_2m;
-//
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-//            weakSelf.todaysTemp.text = [NSString stringWithFormat:@"%@°C",modelObj.current_weather.temperature];
-//            [weakSelf.tableView reloadData];
-//            [weakSelf.collectionView reloadData];
-//        });
+
     }];
     
     NSLog(@"%f | %f",longitude,latitude);

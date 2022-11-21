@@ -9,12 +9,12 @@ import Foundation
 
 public class WeatherForecast: NSObject, Codable {
     
-    @objc public let latitude: Double
-    @objc public let longitude: Double
-    @objc public let generationtime_ms: Double
-    @objc public let utc_offset_seconds: Double
-    @objc public let timezone: String
-    @objc public let timezone_abbreviation: String
+    let latitude: Double
+    let longitude: Double
+    let generationtime_ms: Double
+    let utc_offset_seconds: Double
+    let timezone: String
+    let timezone_abbreviation: String
     let elevation: Double
     let current_weather: CurrentWeatherData
     let hourly_units: HourlyUnit
@@ -37,9 +37,9 @@ public class WeatherForecast: NSObject, Codable {
         case daily = "daily"
     }
     
-    @objc public class func create(from data: Data) -> WeatherForecast {
+    @objc public class func create(from data: Data) -> WeatherForecast? {
         let decoder = JSONDecoder()
-        let item = try! decoder.decode(WeatherForecast.self, from: data)
+        let item = try? decoder.decode(WeatherForecast.self, from: data)
         return item
     }
     
