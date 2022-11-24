@@ -130,7 +130,7 @@ NS_ASSUME_NONNULL_BEGIN
         [ProgressHUD showSuccess: @"Loaded"];
         if(!responseDict) { return; }
         
-        WeatherForecast* modelObj = [[WeatherForecast alloc]initWithDictionary:responseDict];
+        WeatherForecast* modelObj = [self parseJSONwithDictionary:responseDict];
         weakSelf.dailyTimeArray = modelObj.daily.time;
         weakSelf.dailyMinTemperatureArray = modelObj.daily.temperature_2m_min;
         weakSelf.dailyMaxTemperatureArray = modelObj.daily.temperature_2m_max;
@@ -145,6 +145,55 @@ NS_ASSUME_NONNULL_BEGIN
     }];
     
     NSLog(@"%f | %f",longitude,latitude);
+}
+
+-(WeatherForecast*) parseJSONwithDictionary:(NSDictionary*) dictionary {
+    
+    WeatherForecast* weatherforecast = [[WeatherForecast alloc]init];
+    weatherforecast.latitude = dictionary[@"latitude"];
+    weatherforecast.longitude = dictionary[@"longitude"];
+    weatherforecast.generationtime_ms = dictionary[@"generationtime_ms"];
+    weatherforecast.utc_offset_seconds = dictionary[@"utc_offset_seconds"];
+    weatherforecast.timezone = dictionary[@"timezone"];
+    weatherforecast.timezone_abbreviation = dictionary[@"timezone_abbreviation"];
+    weatherforecast.elevation = dictionary[@"elevation"];
+    
+    CurrentWeatherData* currentWeatherData = [CurrentWeatherData new];
+    currentWeatherData.temperature = dictionary[@"current_weather"][@"temperature"];
+    currentWeatherData.windspeed = dictionary[@"current_weather"][@"windspeed"];
+    currentWeatherData.winddirection = dictionary[@"current_weather"][@"winddirection"];
+    currentWeatherData.weathercode = dictionary[@"current_weather"][@"weathercode"];
+    currentWeatherData.time = dictionary[@"current_weather"][@"time"];
+    
+    weatherforecast.current_weather = currentWeatherData;
+    
+    HourlyUnit* hourlyUnit = [HourlyUnit new];
+    hourlyUnit.time = dictionary[@"hourly_units"][@"time"];
+    hourlyUnit.temperature_2m = dictionary[@"hourly_units"][@"temperature_2m"];
+    
+    weatherforecast.hourly_units = hourlyUnit;
+    
+    HourlyWeatherData* hourlyWeatherData = [HourlyWeatherData new];
+    hourlyWeatherData.time = dictionary[@"hourly"][@"time"];
+    hourlyWeatherData.temperature_2m = dictionary[@"hourly"][@"temperature_2m"];
+    
+    weatherforecast.hourly = hourlyWeatherData;
+    
+    DailyUnit* dailyUnit = [DailyUnit new];
+    dailyUnit.time = dictionary[@"daily_units"][@"time"];
+    dailyUnit.temperature_2m_min = dictionary[@"daily_units"][@"temperature_2m_min"];
+    dailyUnit.temperature_2m_max = dictionary[@"daily_units"][@"temperature_2m_max"];
+    
+    weatherforecast.daily_units = dailyUnit;
+    
+    DailyWeatherData* dailyWeatherData = [DailyWeatherData new];
+    dailyWeatherData.time = dictionary[@"daily"][@"time"];
+    dailyWeatherData.temperature_2m_min = dictionary[@"daily"][@"temperature_2m_min"];
+    dailyWeatherData.temperature_2m_max = dictionary[@"daily"][@"temperature_2m_max"];
+    
+    weatherforecast.daily = dailyWeatherData;
+    
+    return weatherforecast;
 }
 
 -(NSString*) getDayNameFrom:(NSString*)dateString {

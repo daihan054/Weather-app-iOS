@@ -9,11 +9,4 @@
 
 @implementation HourlyUnit
 
--(nullable instancetype) initWithDictionary:(nullable NSDictionary*) dict {
-    if(self = [super init]) {
-        self.time = dict[@"time"];
-        self.temperature_2m = dict[@"temperature_2m"];
-    }
-    return self;
-}
 @end

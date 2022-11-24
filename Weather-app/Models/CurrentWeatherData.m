@@ -9,14 +9,4 @@
 
 @implementation CurrentWeatherData
 
--(nullable instancetype) initWithDictionary: (nullable NSDictionary*) dict {
-    if(self = [super init]) {
-        self.time = dict[@"time"];
-        self.temperature = dict[@"temperature"];
-        self.windspeed = dict[@"windspeed"];
-        self.winddirection = dict[@"winddirection"];
-        self.weathercode = dict[@"weathercode"];
-    }
-    return self;
-}
 @end
